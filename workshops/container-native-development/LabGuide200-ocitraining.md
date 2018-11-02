@@ -5,7 +5,7 @@ This is the second of several labs that are part of the **Oracle Public Cloud Co
 
 You will take on 2 personas during the workshop. The **Lead Developer Persona** will be responsible for configuring the parts of the automated build and deploy process that involve details about the application itself. The **DevOps Engineer Persona** will configure the parts of the automation involving the Kubernetes infrastructure. To containerize and automate the building and deploying of this application you will make use of Wercker Pipelines for CI/CD, Docker Hub for a container registry, and Terraform for provisioning a Kubernetes cluster on Oracle Cloud Infrastructure.
 
-During this lab, you will take on the **DevOps Engineer Persona**. You will provision a Kubernetes cluster and all of the infrastructure that it requires using Terraform. Terraform will provision the Virtual Cloud Network, Load Balancers, Kubernetes Master and Worker instances, and etcd instance required to support your cluster.
+
 
 
 ## Objectives
@@ -23,8 +23,10 @@ During this lab, you will take on the **DevOps Engineer Persona**. You will prov
 
 Create an account to  https://ocitraining.qloudable.com
 
+
+
 Follows the instructions in the  https://ocitraining.qloudable.com/landingPage/public/3a81a3fa-38ec-426b-8aaf-2e1dc280ae5b lab.
-You will perform the following tasks:
+During this lab, you will take on the **DevOps Engineer Persona**. You will provision a Kubernetes cluster and all of the infrastructure that it requires using OCI interfaces. You will perform the following tasks:
 
 - Introduction to Docker Enginer
 - Overview of how to sign in to the OCI console.
