@@ -39,8 +39,6 @@ To create a Kubernetes cluster using Container Engine for Kubernetes:
 - Specify configuration details for the new cluster:
 - Name: A name of your choice for the new cluster. Avoid entering confidential information.
 - Version: The version of Kubernetes to run on the master node of the cluster. Amongst other things, the Kubernetes version you select determines the default set of admission controllers that are turned on in the created cluster (the set follows the recommendation given in the Kubernetes documentation for that version).
-- Kubernetes Dashboard Enabled: Select if you want to use the Kubernetes Dashboard to deploy and troubleshoot containerized applications, and to manage Kubernetes resources. See Starting the Kubernetes Dashboard.
-- Tiller (Helm) Enabled: Select if you want Tiller (the server portion of Helm) to run in the Kubernetes cluster. With Tiller running in the cluster, you can use Helm to manage Kubernetes resources.
 
 - Select Quick Create
 
@@ -48,6 +46,9 @@ To create a Kubernetes cluster using Container Engine for Kubernetes:
 - Shape: The number of CPUs and the amount of memory allocated to each node in the node pool.
 - Quantity per Subnet: The number of worker nodes to create for the node pool in each subnet.
 - Public SSH Key: (Optional) The public key portion of the key pair you want to use for SSH access to each node in the node pool. The public key is installed on all worker nodes in the cluster. Note that if you don't specify a public SSH key, Container Engine for Kubernetes will provide one. However, since you won't have the corresponding private key, you will not have SSH access to the worker nodes.
+
+- Kubernetes Dashboard Enabled: Select if you want to use the Kubernetes Dashboard to deploy and troubleshoot containerized applications, and to manage Kubernetes resources. See Starting the Kubernetes Dashboard.
+- Tiller (Helm) Enabled: Select if you want Tiller (the server portion of Helm) to run in the Kubernetes cluster. With Tiller running in the cluster, you can use Helm to manage Kubernetes resources.
 
 - Click Create to create the cluster.
 
