@@ -21,26 +21,35 @@ You will take on 2 personas during the workshop. The **Lead Developer Persona** 
   
 ## Deploying Container Engine for Kubernetes
 
-Create an account to  https://ocitraining.qloudable.com
+**Creating a Kubernetes Cluster**
 
+You can use Container Engine for Kubernetes to create new Kubernetes clusters. To create a cluster, you must either belong to the tenancy's Administrators group, or belong to a group to which a policy grants the CLUSTER_MANAGE permission.
 
+You first specify details for the cluster (for example, the Kubernetes version to install on master nodes). Having defined the cluster, you typically specify details for different node pools in the cluster (for example, the node shape, or resource profile, that determines the number of CPUs and amount of memory assigned to each worker node). Note that although you will usually define node pools immediately when defining a cluster, you don't have to. You can create a cluster with no node pools, and add node pools later.
 
-Follows the instructions in the  https://ocitraining.qloudable.com/landingPage/public/3a81a3fa-38ec-426b-8aaf-2e1dc280ae5b lab.
-During this lab, you will take on the **DevOps Engineer Persona**. You will provision a Kubernetes cluster and all of the infrastructure that it requires using OCI interfaces. You will perform the following tasks:
+- Having specified details for the cluster, you can then go on to create it.
 
-- Introduction to Docker Enginer
-- Overview of how to sign in to the OCI console.
-- Create and Configure VCN (virtual cloud network)
-- Create Public/Private ssh key pair, API Keys using Built in Application
-- Create a Kubernetes Cluster
-- Install Kubectl and Oracle CLI
-- Find OCIDs for Tenant, and User
-- Upload API Keys
-- Download get-kubeconfig.sh file and Initialize your environment
-- Starting the Kubernetes Dashboard
-- Deploying a Sample Nginx App on Cluster Using kubectl
- 
+**Using the Console**
 
+To create a Kubernetes cluster using Container Engine for Kubernetes:
+
+- In the Console, open the navigation menu. Under Solutions, Platform and Edge, go to Developer Services and click Container Clusters.
+- Choose a Compartment you have permission to work in. (to be verified)
+- Click Create Cluster.
+- Specify configuration details for the new cluster:
+- Name: A name of your choice for the new cluster. Avoid entering confidential information.
+- Version: The version of Kubernetes to run on the master node of the cluster. Amongst other things, the Kubernetes version you select determines the default set of admission controllers that are turned on in the created cluster (the set follows the recommendation given in the Kubernetes documentation for that version).
+- Select Quick Create
+- Kubernetes Dashboard Enabled: Select if you want to use the Kubernetes Dashboard to deploy and troubleshoot containerized applications, and to manage Kubernetes resources. See Starting the Kubernetes Dashboard.
+- Tiller (Helm) Enabled: Select if you want Tiller (the server portion of Helm) to run in the Kubernetes cluster. With Tiller running in the cluster, you can use Helm to manage Kubernetes resources.
+- On Node Pool  specify configuration details for the node pool in the cluster:
+- Shape: The number of CPUs and the amount of memory allocated to each node in the node pool.
+- Quantity per Subnet: The number of worker nodes to create for the node pool in each subnet.
+- Public SSH Key: (Optional) The public key portion of the key pair you want to use for SSH access to each node in the node pool. The public key is installed on all worker nodes in the cluster. Note that if you don't specify a public SSH key, Container Engine for Kubernetes will provide one. However, since you won't have the corresponding private key, you will not have SSH access to the worker nodes.
+
+- Click Create to create the cluster.
+
+Container Engine for Kubernetes starts creating the cluster. Initially, the new cluster appears in the list of clusters with a status of Creating. When the cluster has been created, it has a status of Active. Container Engine for Kubernetes also creates a Kubernetes kubeconfig configuration file that you use to access the cluster using kubectl and the Kubernetes Dashboard.
 
 ## Configure and Run Wercker Deployment Pipelines
 
