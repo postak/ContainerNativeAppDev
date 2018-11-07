@@ -32,7 +32,7 @@ You first specify details for the cluster (for example, the Kubernetes version t
 To create a Kubernetes cluster using Container Engine for Kubernetes:
 
 - In the Console, open the navigation menu. Under Solutions, Platform and Edge, go to Developer Services and click Container Clusters.
-- Choose a Compartment you have permission to work in. (to be verified)
+- Choose a Compartment you have permission to work in (provided by tutors).
 - Click Create Cluster.
 - Specify configuration details for the new cluster:
 - Name: A name of your choice for the new cluster. Avoid entering confidential information.
@@ -59,10 +59,10 @@ In order to get the kubeconfig file, it is required to configure the oci command
 which must be configured with:
 
 - the location of the configuration file (use the default value, if file exists should be overwritten)
-- the user OCID (you can copy that from the Main menu on the left (Hamburger Menu)  -> Identity -> Users -> your user (ex. ocid1.user.oc1..aaaaaaaa367m6k3axa4z7fp64aw2hqqmhllfuhqsltzgitk3bdjn2cbgqyxa)
+- the user OCID (you can copy that from the Main menu on the left (Hamburger Menu)  -> Identity -> Users -> User Profile (ex. ocid1.user.oc1..aaaaaaaa367m6k3axa4z7fp64aw2hqqmhllfuhqsltzgitk3bdjn2cbgqyxa)
 - the tenancy OCID (located in the top right account icon -> Tenancy -> Tenancy Information (ex. ocid1.tenancy.oc1..aaaaaaaa6avgch76da3d6l3anl7hvsp5uad74eblsqotvidl2j3y3iq27fwa)
 - the region (select one from eu-frankfurt-1, uk-london-1, us-ashburn-1, us-phoenix-1)
-- let the system generate the key pair and store it in a safe place. Later on, you should put the public key in OCI using the top right account icon -> User Settings -> API Keys
+- let the system generate the key pair and store it in a safe place. Later on, you should put the public key in OCI using the top right account icon -> User Settings -> Add API Key
 - done.
 
 Now you can get the kubeconfig file by running the commands:
@@ -74,11 +74,15 @@ export KUBECONFIG=~/.kube/config***
 
 and you can test it by running the commands:
 
-***kubectl cluster-info
-kubectl get po
-kubectl get svc***
+***kubectl cluster-info*** 
+
+**kubectl get po***
+
+**kubectl get svc***
 
 ## Configure and Run Wercker Deployment Pipelines (Optional)
+
+Prerequisite: lab 100 (Containerize your Java Microservice) completed (https://oracle.github.io/learning-library/workshops/container-native-development/?version=Virtual+Box&page=LabGuide100.md)
 
 ### Define Kubernetes Deployment Specification
 
