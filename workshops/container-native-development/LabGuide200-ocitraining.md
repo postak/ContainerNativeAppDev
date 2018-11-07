@@ -12,7 +12,7 @@ You will take on 2 personas during the workshop. The **Lead Developer Persona** 
 
   - Setup a kubernetes cluster
   
-**Deploying an app using Wercker**
+**Deploying an app using Wercker (optional)**
 
   - Configure and Run Wercker Deployment Pipelines
   - Deploy and Test the Product Catalog Application
@@ -54,7 +54,7 @@ Container Engine for Kubernetes starts creating the cluster. Initially, the new 
 
 In order to get the kubeconfig file, it is required to configure the oci command (preinstalled in the VM, otherwise available for downloading (check https://docs.cloud.oracle.com/iaas/Content/API/SDKDocs/cliinstall.htm) by executing the command:
 
-- ***oci setup config***
+***oci setup config***
 
 which must be configured with:
 
@@ -67,15 +67,16 @@ which must be configured with:
 
 Now you can get the kubeconfig file by running the commands:
 
-mkdir -p $HOME/.kube
+
+***mkdir -p $HOME/.kube
 oci ce cluster create-kubeconfig --cluster-id (your cluster id) --file $HOME/.kube/config
-export KUBECONFIG=~/.kube/config
+export KUBECONFIG=~/.kube/config***
 
 and you can test it by running the commands:
 
-kubectl cluster-info
+***kubectl cluster-info
 kubectl get po
-kubectl get svc
+kubectl get svc***
 
 ## Configure and Run Wercker Deployment Pipelines (Optional)
 
