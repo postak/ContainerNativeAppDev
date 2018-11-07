@@ -6,8 +6,6 @@ This is the second of several labs that are part of the **Oracle Public Cloud Co
 You will take on 2 personas during the workshop. The **Lead Developer Persona** will be responsible for configuring the parts of the automated build and deploy process that involve details about the application itself. The **DevOps Engineer Persona** will configure the parts of the automation involving the Kubernetes infrastructure. To containerize and automate the building and deploying of this application you will make use of Wercker Pipelines for CI/CD, Docker Hub for a container registry, and Terraform for provisioning a Kubernetes cluster on Oracle Cloud Infrastructure.
 
 
-
-
 ## Objectives
 
 **Deploying Container Engine for Kubernetes**
@@ -54,7 +52,32 @@ To create a Kubernetes cluster using Container Engine for Kubernetes:
 
 Container Engine for Kubernetes starts creating the cluster. Initially, the new cluster appears in the list of clusters with a status of Creating. When the cluster has been created, it has a status of Active. Container Engine for Kubernetes also creates a Kubernetes kubeconfig configuration file that you use to access the cluster using kubectl and the Kubernetes Dashboard.
 
-## Configure and Run Wercker Deployment Pipelines
+In order to get the kubeconfig file, it is required to configure the oci command (preinstalled in the VM, otherwise available for downloading (check https://docs.cloud.oracle.com/iaas/Content/API/SDKDocs/cliinstall.htm) by executing the command:
+
+- ***oci setup config***
+
+which must be configured with:
+
+- the location of the configuration file (use the default value, if file exists should be overwritten)
+- the user OCID (you can copy that from the Main menu on the left (Hamburger Menu)  -> Identity -> Users -> your user (ex. ocid1.user.oc1..aaaaaaaa367m6k3axa4z7fp64aw2hqqmhllfuhqsltzgitk3bdjn2cbgqyxa)
+- the tenancy OCID (located in the top right account icon -> Tenancy -> Tenancy Information (ex. ocid1.tenancy.oc1..aaaaaaaa6avgch76da3d6l3anl7hvsp5uad74eblsqotvidl2j3y3iq27fwa)
+- the region (select one from eu-frankfurt-1, uk-london-1, us-ashburn-1, us-phoenix-1)
+- let the system generate the key pair and store it in a safe place. Later on, you should put the public key in OCI using the top right account icon -> User Settings -> API Keys
+- done.
+
+Now you can get the kubeconfig file by running the commands:
+
+mkdir -p $HOME/.kube
+oci ce cluster create-kubeconfig --cluster-id (your cluster id) --file $HOME/.kube/config
+export KUBECONFIG=~/.kube/config
+
+and you can test it by running the commands:
+
+kubectl cluster-info
+kubectl get po
+kubectl get svc
+
+## Configure and Run Wercker Deployment Pipelines (Optional)
 
 ### Define Kubernetes Deployment Specification
 
@@ -270,7 +293,7 @@ deploy-to-cluster:
 
 **NOTE**: You may be wondering why we had to use the Kubernetes remote terminal to test our application. Remember the kubernetes.yml file that we created earlier -- we specified a cluster-internal IP address for our twitter-feed service. This means that only other processes inside the cluster can reach our service. If we wanted to access our service from the internet, we could have used a load balancer instead.
 
-## Deploy and Test the Product Catalog Application
+## Deploy and Test the Product Catalog Application (optional)
 
 ### Download the Product Catalog Kubernetes YAML file
 
